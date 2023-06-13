@@ -66,7 +66,7 @@ SELECT  idCompteTier, pre, intitule as societe, CONCAT(prefixe,':',intitule) AS 
     JOIN planTier p 
     ON c.idPlanTier = p.idPlanTier;
 
--- create view v_information as
+create view v_information as
 Select a.designation as designation, quantiteComm as quantite, a.prixUnitaire as prixUnitaire,c.dateComm as datecommande, c.idCompteTier as idCompteTier,
 d.idComm as idcommande, ct.nomResponsable as nomResponsable, ct.intitule,ct.email,ct.adresse,ct.phone
 FROM detailCommande d
