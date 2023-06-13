@@ -65,10 +65,14 @@ insert into detailCommande (idComm,idArticle,quantiteComm) values (1,1,4),(1,2,6
 SELECT  idCompteTier, pre, intitule as societe, CONCAT(prefixe,':',intitule) AS intitule,nomResponsable,email,adresse,phone FROM CompteTier c
     JOIN planTier p 
     ON c.idPlanTier = p.idPlanTier;
-    
-create view v_information as
-Select a.designation as designation, quantiteComm as quantite, a.prixUnitaire as prixUnitaire,c.dateComm as datecommande, c.idCompteTier as idCompteTier,d.idComm as idcommande FROM detailCommande d
+
+-- create view v_information as
+Select a.designation as designation, quantiteComm as quantite, a.prixUnitaire as prixUnitaire,c.dateComm as datecommande, c.idCompteTier as idCompteTier,
+d.idComm as idcommande, ct.nomResponsable as nomResponsable, ct.intitule,ct.email,ct.adresse,ct.phone
+FROM detailCommande d
 JOIN article a
 ON a.idArticle= d.idArticle
 JOIN commande c
-ON c.idComm= d.idComm ;
+ON c.idComm= d.idComm 
+JOIN compteTier ct
+ON c.idCompteTier=ct.idCompteTier;
