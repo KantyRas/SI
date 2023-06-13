@@ -8,6 +8,7 @@ create table unite(
     idUnite serial primary key,
     nomUnite varchar(5) unique
 );
+
 insert into unite (nomUnite) values ('kg'),('L'),('T');
 create table article(
     idArticle serial primary key,
@@ -27,6 +28,7 @@ CREATE TABLE planTier(
     prefixe VARCHAR(30)
 );
 INSERT INTO PlanTier (type,numero,pre,prefixe) VALUES (41100,'Client','Cl','CLT'),(40100,'Fournisseur','Fo','FRNS');
+
 create table compteTier(
     idCompteTier serial primary key,
     idPlanTier int not null,
@@ -39,6 +41,7 @@ create table compteTier(
 );
 insert into compteTier (idPlanTier,intitule,nomResponsable,email,adresse,phone) 
 values(1,'LOVASOA','RaNoum','lovasoa@gmail.com','lot 45 Ampefiloha','0345612110');
+
 create table commande(
     idComm serial primary key,
     idCompteTier int not null,
@@ -62,3 +65,10 @@ insert into detailCommande (idComm,idArticle,quantiteComm) values (1,1,4),(1,2,6
 SELECT  idCompteTier, pre, intitule as societe, CONCAT(prefixe,':',intitule) AS intitule,nomResponsable,email,adresse,phone FROM CompteTier c
     JOIN planTier p 
     ON c.idPlanTier = p.idPlanTier;
+    
+create view v_information as
+Select a.designation as designation, quantiteComm as quantite, a.prixUnitaire as prixUnitaire,c.dateComm as datecommande, c.idCompteTier as idCompteTier,d.idComm as idcommande FROM detailCommande d
+JOIN article a
+ON a.idArticle= d.idArticle
+JOIN commande c
+ON c.idComm= d.idComm ;
