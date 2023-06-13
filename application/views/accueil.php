@@ -66,7 +66,6 @@
 
 <!-- CONTENT -->
 <section id="content">
-    <!-- NAVBAR -->
     <nav>
         <i class='bx bx-menu' ></i>
         <a href="#" class="nav-link">Categories</a>
@@ -86,4 +85,6 @@
             <img src="<?php echo base_url()?>/assets/img/people.png">
         </a>
     </nav>
+    <!-- NAVBAR -->
+    <p><a href="<?php echo base_url("C_control/afficherfacture") ?>">Go to Facture </a> </p>
 <!-- CONTENT -->

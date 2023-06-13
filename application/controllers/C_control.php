@@ -51,4 +51,8 @@ class C_control extends CI_Controller {
     public function loadAccueil(){
         $this->load->view('accueil');
     }
+    public function afficherfacture()
+	{
+		$this->load->view('facture');
+	}
 }
